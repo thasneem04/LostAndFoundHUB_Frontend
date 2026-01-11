@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 
 const ReportFound = () => {
-    const url = process.env.REACT_APP_API_URL;
+  const url = process.env.REACT_APP_API_URL;
 
   const [formData, setFormData] = useState({
     name: "",
@@ -11,7 +11,7 @@ const ReportFound = () => {
     image: null,
   });
 
-  const [status, setStatus] = useState(""); // success/failure message
+  const [status, setStatus] = useState("");
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -30,9 +30,12 @@ const ReportFound = () => {
       data.append("description", formData.description);
       data.append("location", formData.location);
       if (formData.image) data.append("image", formData.image);
+      const token = localStorage.getItem("token");
 
       const response = await axios.post(`${url}/items/found`, data, {
-        headers: { "Content-Type": "multipart/form-data" },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
 
       setStatus(response.data.message);
@@ -44,12 +47,17 @@ const ReportFound = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: "url(/path-to-hero-bg.jpg)" }}>
+    <div
+      className="min-h-screen flex items-center justify-center bg-cover bg-center"
+      style={{ backgroundImage: "url(/path-to-hero-bg.jpg)" }}
+    >
       <form
         onSubmit={handleSubmit}
         className="bg-white/10 backdrop-blur-lg p-8 rounded-xl shadow-xl w-full max-w-md"
       >
-        <h2 className="text-2xl font-bold text-white mb-6 text-center">Report Found Item</h2>
+        <h2 className="text-2xl font-bold text-white mb-6 text-center">
+          Report Found Item
+        </h2>
 
         <input
           type="text"
