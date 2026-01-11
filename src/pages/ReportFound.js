@@ -32,7 +32,7 @@ const ReportFound = () => {
       if (formData.image) data.append("image", formData.image);
       const token = localStorage.getItem("token");
 
-      const response = await axios.post(`${url}/items/found`, data, {
+      const response = await axios.post(`${url}/items/items`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
