@@ -1,0 +1,54 @@
+.title-3d span {
+  display: inline-block;
+  font-size: 3rem; /* keep it neat */
+  color: #fff;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+
+  /* 3D look */
+  text-shadow: 2px 2px 0 #b87333, 
+               4px 4px 0 #8b4513,
+               6px 6px 5px rgba(0,0,0,0.6);
+
+  /* Animation */
+  animation: swingJump 2s ease-in-out infinite;
+}
+
+/* Swing + Jump Keyframes */
+@keyframes swingJump {
+  0% { transform: rotate(0deg) translateY(0); }
+  25% { transform: rotate(5deg) translateY(-8px); }
+  50% { transform: rotate(0deg) translateY(0); }
+  75% { transform: rotate(-5deg) translateY(-8px); }
+  100% { transform: rotate(0deg) translateY(0); }
+}
+@keyframes modalOpen {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes modalBounce {
+  0% { opacity: 0; transform: translateY(-50px) scale(0.8); }
+  50% { opacity: 1; transform: translateY(0px) scale(1.05); }
+  100% { transform: translateY(0px) scale(1); }
+}
+
+@keyframes modalClose {
+  0% { opacity: 1; transform: translateY(0px) scale(1); }
+  100% { opacity: 0; transform: translateY(-50px) scale(0.8); }
+}
+
+.animate-modal-bounce {
+  animation: modalBounce 0.4s ease forwards;
+}
+
+.animate-modal-close {
+  animation: modalClose 0.4s ease forwards;
+}
+
