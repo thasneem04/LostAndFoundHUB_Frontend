@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 
 const ReportFound = () => {
+  console.log("API URL:", url);
+
   const url = process.env.REACT_APP_API_URL;
 
   const [formData, setFormData] = useState({
