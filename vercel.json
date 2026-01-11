@@ -1,8 +1,12 @@
 {
   "rewrites": [
     {
+      "source": "/manifest.json",
+      "destination": "/frontend/public/manifest.json"
+    },
+    {
       "source": "/(.*)",
-      "destination": "/index.html"
+      "destination": "/frontend/index.html"
     }
   ]
 }
